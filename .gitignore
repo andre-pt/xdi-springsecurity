@@ -1,0 +1,6 @@
+/target/**
+/.settings/**
+/.classpath
+/.jsdtscope
+/.project
+.DS_Store
