@@ -21,6 +21,7 @@
 			login-page="/index.html"
 			login-processing-url="/doLogin"
 			default-target-url="/safeindex.html"
+			always-use-default-target="true"
 			authentication-failure-url="/index.html?login_error=1"
 			username-parameter="cloudName"
 			password-parameter="password" />

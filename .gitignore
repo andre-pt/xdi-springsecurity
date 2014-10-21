@@ -4,3 +4,4 @@
 /.jsdtscope
 /.project
 .DS_Store
+/target/

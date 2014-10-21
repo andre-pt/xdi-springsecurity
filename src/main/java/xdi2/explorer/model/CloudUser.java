@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 import xdi2.client.XDIClient;
 import xdi2.client.http.XDIHttpClient;
-import xdi2.core.features.linkcontracts.RootLinkContract;
-import xdi2.core.xri3.CloudNumber;
+import xdi2.core.features.linkcontracts.instance.RootLinkContract;
+import xdi2.core.syntax.CloudNumber;
 import xdi2.messaging.Message;
 
 public class CloudUser implements Serializable {
@@ -25,8 +25,8 @@ public class CloudUser implements Serializable {
 	}
 
 	public Message prepareMessageToCloud(Message message) {
-		message.setToPeerRootXri(getCloudNumber().getPeerRootXri());
-		message.setLinkContractXri(RootLinkContract.createRootLinkContractXri(getCloudNumber().getXri()));
+		message.setToPeerRootXDIArc(getCloudNumber().getPeerRootXDIArc());
+		message.setLinkContract(RootLinkContract.class);
 		message.setSecretToken(this.secretToken);
 
 		return message;
@@ -39,28 +39,17 @@ public class CloudUser implements Serializable {
 	public CloudNumber getCloudNumber() {
 		return CloudNumber.create(this.cloudNumber);
 	}
-	public void setCloudNumber(CloudNumber cloudNumber) {
-		this.cloudNumber = cloudNumber.toString();
-	}
 
-	
 	public String getCloudName() {
 		return cloudName;
 	}
-	public void setCloudName(String cloudName) {
-		this.cloudName = cloudName;
-	}
+	
 	public String getSecretToken() {
 		return secretToken;
 	}
-	public void setSecretToken(String secretToken) {
-		this.secretToken = secretToken;
-	}
-	public String getXdiEndpointUri() {
+
+	public String getXdiEndpointUrl() {
 		return xdiEndpointUri;
-	}
-	public void setXdiEndpointUri(String xdiEndpointUri) {
-		this.xdiEndpointUri = xdiEndpointUri;
 	}
 
 
